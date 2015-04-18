@@ -55,9 +55,9 @@ public class SassAutoCompiler {
            targetFile = args[1];
            watchDirectory = args[2];
        } else {
-           sourceFile = Paths.get("src/main/resources/VAADIN/themes/my-theme/styles.scss").toString();
-           targetFile = Paths.get("target/classes/VAADIN/themes/my-theme/styles.css").toString();
-           watchDirectory = Paths.get("src/main/resources/VAADIN/themes/my-theme").toString();
+           sourceFile = Paths.get("src/main/resources/VAADIN/themes/mytheme/styles.scss").toString();
+           targetFile = Paths.get("target/classes/VAADIN/themes/mytheme/styles.css").toString();
+           watchDirectory = Paths.get("src/main/resources/VAADIN/themes/mytheme").toString();
        }
 
        LOGGER.info("SASS compilation source file: " + sourceFile);
