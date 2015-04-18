@@ -5,6 +5,7 @@ import org.vaadin.tunis.blood_donation.samples.about.AboutView;
 
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.ViewChangeListener;
+import com.vaadin.navigator.ViewProvider;
 import com.vaadin.server.FontAwesome;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.HorizontalLayout;
@@ -17,7 +18,7 @@ import com.vaadin.ui.HorizontalLayout;
 public class MainScreen extends HorizontalLayout {
     private Menu menu;
 
-    public MainScreen(MyUI ui) {
+    public MainScreen(MyUI ui,ViewProvider viewProvider) {
 
         setStyleName("main-screen");
 
@@ -26,12 +27,15 @@ public class MainScreen extends HorizontalLayout {
         viewContainer.setSizeFull();
 
         final Navigator navigator = new Navigator(ui, viewContainer);
+        navigator.addProvider(viewProvider);
         navigator.setErrorView(ErrorView.class);
         menu = new Menu(navigator);
         //menu.addView(new SampleCrudView(), SampleCrudView.VIEW_NAME, SampleCrudView.VIEW_NAME, FontAwesome.EDIT);
         menu.addView(new MapView(), MapView.VIEW_NAME, MapView.VIEW_NAME, FontAwesome.MAP_MARKER);
         menu.addView(new AboutView(), AboutView.VIEW_NAME, AboutView.VIEW_NAME,
                 FontAwesome.INFO_CIRCLE);
+        menu.addView(new TestUserView(), TestUserView.VIEW_NAME, TestUserView.VIEW_NAME,
+                FontAwesome.USERS);
 
         navigator.addViewChangeListener(viewChangeListener);
 

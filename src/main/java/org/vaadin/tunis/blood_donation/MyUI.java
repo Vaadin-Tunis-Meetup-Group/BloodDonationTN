@@ -1,7 +1,6 @@
 package org.vaadin.tunis.blood_donation;
 
-import javax.servlet.annotation.WebServlet;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.vaadin.tunis.blood_donation.samples.MainScreen;
 import org.vaadin.tunis.blood_donation.samples.authentication.AccessControl;
 import org.vaadin.tunis.blood_donation.samples.authentication.BasicAccessControl;
@@ -15,6 +14,8 @@ import com.vaadin.annotations.Widgetset;
 import com.vaadin.server.Responsive;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
+import com.vaadin.spring.annotation.SpringUI;
+import com.vaadin.spring.navigator.SpringViewProvider;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.themes.ValoTheme;
 
@@ -26,10 +27,15 @@ import com.vaadin.ui.themes.ValoTheme;
  * mobile devices. Instead of device based scaling (default), using responsive
  * layouts.
  */
+
 @Viewport("user-scalable=no,initial-scale=1.0")
 @Theme("mytheme")
-@Widgetset("org.vaadin.tunis.blood_donation.MyAppWidgetset")
+@SpringUI(path="")
+@Widgetset("org.vaadin.tunis.blood_donation.widgetset.MyAppWidgetset")
 public class MyUI extends UI {
+	
+	@Autowired
+	private SpringViewProvider viewProvider;
 
     private AccessControl accessControl = new BasicAccessControl();
 
@@ -52,7 +58,7 @@ public class MyUI extends UI {
 
     protected void showMainView() {
         addStyleName(ValoTheme.UI_WITH_MENU);
-        setContent(new MainScreen(MyUI.this));
+        setContent(new MainScreen(MyUI.this,viewProvider));
         getNavigator().navigateTo(getNavigator().getState());
     }
 
@@ -64,8 +70,5 @@ public class MyUI extends UI {
         return accessControl;
     }
 
-    @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
-    @VaadinServletConfiguration(ui = MyUI.class, productionMode = false)
-    public static class MyUIServlet extends VaadinServlet {
-    }
+  
 }
