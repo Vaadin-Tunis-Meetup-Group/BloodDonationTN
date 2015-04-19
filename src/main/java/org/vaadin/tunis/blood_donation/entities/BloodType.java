@@ -1,9 +1,9 @@
 package org.vaadin.tunis.blood_donation.entities;
 
 public enum BloodType {
-	O_POSITIVE("O_Positive"), O_NEGATIVE("O_Negative"), A_POSITIVE("A_Positive"), A_NEGATIVE(
-			"A_Negative"), B_POSITIVE("B_Positive"), B_NEGATIVE("B_Negative"), AB_POSITIVE(
-			"AB_Positive"), AB_NEGATIVE("AB_Negative");
+	O_POSITIVE("O+"), O_NEGATIVE("O-"), A_POSITIVE("A+"), A_NEGATIVE(
+			"A-"), B_POSITIVE("B+"), B_NEGATIVE("B-"), AB_POSITIVE(
+			"AB+"), AB_NEGATIVE("AB-");
 	private final String bloodType;
 
 	private BloodType(String type) {
