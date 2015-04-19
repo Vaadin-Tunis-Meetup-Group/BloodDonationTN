@@ -2,7 +2,6 @@ package org.vaadin.tunis.blood_donation.samples;
 
 import org.vaadin.tunis.blood_donation.MyUI;
 import org.vaadin.tunis.blood_donation.samples.about.AboutView;
-import org.vaadin.tunis.blood_donation.samples.crud.SampleCrudView;
 
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.ViewChangeListener;
