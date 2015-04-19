@@ -1,6 +1,7 @@
 package org.vaadin.tunis.blood_donation.samples.crud;
 
 import org.vaadin.tunis.blood_donation.MyUI;
+import org.vaadin.tunis.blood_donation.samples.MapView;
 import org.vaadin.tunis.blood_donation.samples.backend.DataService;
 import org.vaadin.tunis.blood_donation.samples.backend.data.Product;
 
@@ -17,25 +18,24 @@ import com.vaadin.server.Page;
  */
 public class SampleCrudLogic {
 
-    private SampleCrudView view;
+    private MapView view;
 
-    public SampleCrudLogic(SampleCrudView simpleCrudView) {
-        view = simpleCrudView;
+    public SampleCrudLogic(MapView mapView) {
+        view = mapView;
     }
 
     public void init() {
         editProduct(null);
         // Hide and disable if not admin
         if (!MyUI.get().getAccessControl().isUserInRole("admin")) {
-            view.setNewProductEnabled(false);
+            //view.setNewProductEnabled(false);
         }
 
-        view.showProducts(DataService.get().getAllProducts());
+        //view.showProducts(DataService.get().getAllProducts());
     }
 
     public void cancelProduct() {
         setFragmentParameter("");
-        view.clearSelection();
         view.editProduct(null);
     }
 
@@ -51,7 +51,7 @@ public class SampleCrudLogic {
         }
 
         Page page = MyUI.get().getPage();
-        page.setUriFragment("!" + SampleCrudView.VIEW_NAME + "/"
+        page.setUriFragment("!" + MapView.VIEW_NAME + "/"
                 + fragmentParameter, false);
     }
 
@@ -65,7 +65,7 @@ public class SampleCrudLogic {
                 try {
                     int pid = Integer.parseInt(productId);
                     Product product = findProduct(pid);
-                    view.selectRow(product);
+                    //view.selectRow(product);
                 } catch (NumberFormatException e) {
                 }
             }
@@ -79,9 +79,9 @@ public class SampleCrudLogic {
     public void saveProduct(Product product) {
         view.showSaveNotification(product.getProductName() + " ("
                 + product.getId() + ") updated");
-        view.clearSelection();
+        //view.clearSelection();
         view.editProduct(null);
-        view.refreshProduct(product);
+        //view.refreshProduct(product);
         setFragmentParameter("");
     }
 
@@ -90,9 +90,9 @@ public class SampleCrudLogic {
         view.showSaveNotification(product.getProductName() + " ("
                 + product.getId() + ") removed");
 
-        view.clearSelection();
+        //view.clearSelection();
         view.editProduct(null);
-        view.removeProduct(product);
+        //view.removeProduct(product);
         setFragmentParameter("");
     }
 
@@ -106,7 +106,7 @@ public class SampleCrudLogic {
     }
 
     public void newProduct() {
-        view.clearSelection();
+        //view.clearSelection();
         setFragmentParameter("new");
         view.editProduct(new Product());
     }

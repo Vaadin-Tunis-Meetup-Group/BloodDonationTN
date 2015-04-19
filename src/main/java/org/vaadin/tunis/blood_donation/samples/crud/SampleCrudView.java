@@ -36,7 +36,7 @@ public class SampleCrudView extends CssLayout implements View {
     private ProductGrid grid;
     private ProductForm form;
 
-    private SampleCrudLogic viewLogic = new SampleCrudLogic(this);
+    //private SampleCrudLogic viewLogic = new SampleCrudLogic(this);
     private Button newProduct;
 
     public SampleCrudView() {
@@ -49,11 +49,11 @@ public class SampleCrudView extends CssLayout implements View {
 
             @Override
             public void select(SelectionEvent event) {
-                viewLogic.rowSelected(grid.getSelectedRow());
+               // viewLogic.rowSelected(grid.getSelectedRow());
             }
         });
 
-        form = new ProductForm(viewLogic);
+        //form = new ProductForm(viewLogic);
         form.setCategories(DataService.get().getAllCategories());
 
         VerticalLayout barAndGridLayout = new VerticalLayout();
@@ -68,7 +68,7 @@ public class SampleCrudView extends CssLayout implements View {
         addComponent(barAndGridLayout);
         addComponent(form);
 
-        viewLogic.init();
+        //viewLogic.init();
     }
 
     public HorizontalLayout createTopBar() {
@@ -90,7 +90,7 @@ public class SampleCrudView extends CssLayout implements View {
         newProduct.addClickListener(new ClickListener() {
             @Override
             public void buttonClick(ClickEvent event) {
-                viewLogic.newProduct();
+                //viewLogic.newProduct();
             }
         });
 
@@ -107,7 +107,7 @@ public class SampleCrudView extends CssLayout implements View {
 
     @Override
     public void enter(ViewChangeEvent event) {
-        viewLogic.enter(event.getParameters());
+        //viewLogic.enter(event.getParameters());
     }
 
     public void showError(String msg) {

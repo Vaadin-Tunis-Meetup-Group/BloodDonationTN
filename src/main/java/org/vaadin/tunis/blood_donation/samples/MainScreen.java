@@ -29,9 +29,8 @@ public class MainScreen extends HorizontalLayout {
         final Navigator navigator = new Navigator(ui, viewContainer);
         navigator.setErrorView(ErrorView.class);
         menu = new Menu(navigator);
-        menu.addView(new SampleCrudView(), SampleCrudView.VIEW_NAME,
-                SampleCrudView.VIEW_NAME, FontAwesome.EDIT);
-        menu.addView(new MapView(),MapView.VIEW_NAME,MapView.VIEW_NAME,FontAwesome.MAP_MARKER);
+        //menu.addView(new SampleCrudView(), SampleCrudView.VIEW_NAME, SampleCrudView.VIEW_NAME, FontAwesome.EDIT);
+        menu.addView(new MapView(), MapView.VIEW_NAME, MapView.VIEW_NAME, FontAwesome.MAP_MARKER);
         menu.addView(new AboutView(), AboutView.VIEW_NAME, AboutView.VIEW_NAME,
                 FontAwesome.INFO_CIRCLE);
 
