@@ -3,10 +3,16 @@
         "http://google-web-toolkit.googlecode.com/svn/tags/2.5.1/distro-source/core/src/gwt-module.dtd">
 <module>
 	<inherits name="com.vaadin.DefaultWidgetSet" />
+	<inherits name="com.vaadin.addon.touchkit.gwt.TouchKitWidgetSet" />
+	<!-- override the default touchkit theme loader -->
+	<replace-with
+		class="org.vaadin.tunis.blood_donation.client.CustomThemeLoader">
+		<when-type-is class="com.vaadin.addon.touchkit.gwt.client.ThemeLoader" />
+	</replace-with>
+	<source path='client' />
 
 
+	<inherits name="org.vaadin.addon.leaflet.Widgetset" />
 
-    <inherits name="org.vaadin.addon.leaflet.Widgetset" />
-
-    <inherits name="com.vaadin.tapio.googlemaps.Widgetset" />
+	<inherits name="com.vaadin.tapio.googlemaps.Widgetset" />
 </module>
